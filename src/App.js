@@ -8,12 +8,10 @@ function App() {
   useEffect(() => {
     const fetch = async () => {
       const { data } = await axios.get("http://localhost:3000/hash");
-      console.log(data)
       const pairs = {};
       data.forEach(
         (pair) => (pairs[pair.hash] = [...(pairs[pair.hash] || []), pair.content])
       );
-      console.log(pairs)
       setData(pairs);
     };
     fetch();
